@@ -1,4 +1,4 @@
-import Color from 'SnakeGame/enums.js'
+
 
 class Point
 {
@@ -36,9 +36,6 @@ class Point
 
     static compare(point1, point2)
     {
-        if ((point1.x == point2.x) && (point1.y == point2.y))
-            return true;
-        else
-            return false;
+        return (point1.x === point2.x) && (point1.y === point2.y);
     }
 }
