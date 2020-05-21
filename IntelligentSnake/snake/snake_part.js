@@ -1,4 +1,4 @@
-// import Point from 'IntelligentSnake/point.js'
+import Point from 'IntelligentSnake/point.js'
 
 export default class SnakePart extends Point
 {

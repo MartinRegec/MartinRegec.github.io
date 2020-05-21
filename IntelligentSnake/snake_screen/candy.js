@@ -1,4 +1,4 @@
-// import Point from "../point";
+import Point from "../point";
 
 
 export default class Candy extends Point

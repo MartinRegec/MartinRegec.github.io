@@ -1,4 +1,4 @@
-// import MyScreen from "./snake_screen/my_screen";
+import MyScreen from "./snake_screen/my_screen";
 
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");

@@ -1,6 +1,6 @@
-// import Snake from "../snake/snake";
-// import Point from "../point";
-// import Candy from "./candy";
+import Snake from "../snake/snake";
+import Point from "../point";
+import Candy from "./candy";
 
 
 export default class MyScreen
