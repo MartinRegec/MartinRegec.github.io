@@ -1,10 +1,10 @@
 
 const Color =
     {
-        WHITE: 0,
-        BLACK: 1,
-        RED: 2,
-        GREEN: 3
+        WHITE: "#ffffff",
+        BLACK: "#000000",
+        RED: "#ff0000",
+        GREEN: "#00ff00"
     };
 
 const Direction =
@@ -13,6 +13,7 @@ const Direction =
         DOWN: 1,
         LEFT: 2,
         RIGHT: 3,
+
         get_opposite(direction)
         {
             if (direction === Direction.RIGHT)
