@@ -1,6 +1,6 @@
 
 
-class Point
+export default class Point
 {
     constructor(x, y, color)
     {
