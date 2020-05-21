@@ -3,7 +3,7 @@ import Point from "../point";
 import Candy from "./candy";
 
 
-export default class Screen
+export default class MyScreen
 {
     constructor(height, width, background_color, snake_body_color, snake_head_color, candies_color) {
         this.height = height;
@@ -95,4 +95,14 @@ export default class Screen
         }while (this.is_pos_free(new_candy))
     }
 
+    draw(ctx, scale) {
+        for (let y = 0; y < this.grid.length; y++)
+        {
+            for (let x = 0; x < this.grid[y].length; x++)
+            {
+                ctx.fillStyle = this.grid[y][x].color
+                ctx.fillRect(x, y, scale, scale);
+            }
+        }
+    }
 }
