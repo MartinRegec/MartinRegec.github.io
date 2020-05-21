@@ -6,7 +6,12 @@ class SnakePart extends Point
         super(x ,y, color);
     }
 
-    move_to(x, y){
+    move_to(x, y) {
         this.x_ = x;
+        this.y_ = y;
+    }
+
+    copy() {
+        return new SnakePart(this.x, this.y, this.color)
     }
 }
