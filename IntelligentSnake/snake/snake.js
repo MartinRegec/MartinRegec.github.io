@@ -1,6 +1,6 @@
-import Head from "./head.js";
-import SnakePart from "./snake_part";
-import Direction from "../enums.js";
+// import Head from "./head.js";
+// import SnakePart from "./snake_part";
+// import Direction from "../enums.js";
 
 export default class Snake
 {

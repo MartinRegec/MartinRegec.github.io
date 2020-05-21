@@ -1,5 +1,5 @@
-import SnakePart from 'IntelligentSnake/snake/snake_part.js'
-import Direction from 'IntelligentSnake/enums.js'
+// import SnakePart from 'IntelligentSnake/snake/snake_part.js'
+// import Direction from 'IntelligentSnake/enums.js'
 
 
 export default class Head extends SnakePart
