@@ -1,7 +1,7 @@
 // import Point from "../point";
 
 
-export default class Candy extends Point
+class Candy extends Point
 {
     constructor(x, y, color) {
         super(x ,y ,color);

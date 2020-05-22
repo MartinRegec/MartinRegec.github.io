@@ -2,7 +2,7 @@
 // import Direction from 'IntelligentSnake/enums.js'
 
 
-export default class Head extends SnakePart
+class Head extends SnakePart
 {
     constructor(x ,y , color) {
         super(x, y, color);
@@ -31,7 +31,7 @@ export default class Head extends SnakePart
 
     move_up(max) {
         if ((this.y - 1) >= 0)
-            this.y_ += 1;
+            this.y_ -= 1;
         else
             this.y_ = max;
     }
@@ -45,7 +45,7 @@ export default class Head extends SnakePart
 
     next_left(max) {
         if ((this.x - 1) >= 0)
-            return { x: self.x - 1, y: this.y};
+            return { x: this.x - 1, y: this.y};
         else
             return { x: max, y: this.y };
     }
@@ -59,7 +59,7 @@ export default class Head extends SnakePart
 
     next_up(max) {
         if ((this.y - 1) >= 0)
-            return { x: this.x, y: this.y + 1 };
+            return { x: this.x, y: this.y - 1 };
         else
             return { x: this.x, y: max };
     }
