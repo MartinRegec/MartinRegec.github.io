@@ -1,6 +1,6 @@
-import Point from 'IntelligentSnake/point.js'
+// import Point from 'IntelligentSnake/point.js'
 
-export default class SnakePart extends Point
+class SnakePart extends Point
 {
     constructor(x, y, color) {
         super(x ,y, color);
