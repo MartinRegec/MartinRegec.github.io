@@ -6,8 +6,8 @@
 class MyScreen
 {
     constructor(height, width, background_color, snake_body_color, snake_head_color, candies_color) {
-        this.height = height;
-        this.width = width;
+        this.height_ = height;
+        this.width_ = width;
         this.background_color = background_color;
         this.candies_color = candies_color;
         this.candies = [];
@@ -16,28 +16,36 @@ class MyScreen
         this.update_grid();
     }
 
+    set height(height) {
+        this.height_ = height;
+    }
+
+    set width(width) {
+        this.width_ = width;
+    }
+
     reset() {
         this.candies = [];
-        this.snake = new Snake(Math.floor(this.width/2), Math.floor(this.height/2), this.snake.head.color,
+        this.snake = new Snake(Math.floor(this.width_/2), Math.floor(this.height_/2), this.snake.head.color,
             this.snake.body_color);
         this.update_grid();
     }
 
     generate_grid() {
         let grid = [];
-        for (let y = 0; y < this.width; y++)
+        for (let y = 0; y < this.width_; y++)
         {
             grid[y] = [];
-            for (let x = 0; x < this.height; x++)
+            for (let x = 0; x < this.height_; x++)
                 grid[y][x] = new Point(x, y, this.background_color);
         }
         return grid;
     }
 
     clean_grid() {
-        for (let y = 0; y < this.width; y++)
+        for (let y = 0; y < this.width_; y++)
         {
-            for (let x = 0; x < this.height; x++)
+            for (let x = 0; x < this.height_; x++)
                 this.grid[y][x].color = this.background_color;
         }
     }
@@ -52,7 +60,7 @@ class MyScreen
     }
 
     move(dir) {
-        this.snake.move(dir, this.width-1, this.height-1);
+        this.snake.move(dir, this.width_-1, this.height_-1);
         this.update_grid();
     }
 
@@ -72,22 +80,22 @@ class MyScreen
             this.add_and_move_next();
         }
         else
-            this.snake.move_next(this.width-1, this.height-1);
+            this.snake.move_next(this.width_-1, this.height_-1);
 
         this.update_grid();
         this.snake.can_change_dir = true;
     }
 
     add_and_move(dir) {
-        this.snake.add_and_move(dir, this.width-1, this.height-1);
+        this.snake.add_and_move(dir, this.width_-1, this.height_-1);
     }
 
     add_and_move_next() {
-        this.snake.add_and_move_next(this.width-1, this.height-1);
+        this.snake.add_and_move_next(this.width_-1, this.height_-1);
     }
 
     check_next(dir) {
-        return this.snake.head.next(dir,this.width-1, this.height-1);
+        return this.snake.head.next(dir,this.width_-1, this.height_-1);
     }
 
     collision_with_snake(point) {
@@ -117,7 +125,7 @@ class MyScreen
     generate_candy() {
         let new_candy;
         do {
-            new_candy = Candy.generate(this.width-1, this.height-1, this.candies_color);
+            new_candy = Candy.generate(this.width_-1, this.height_-1, this.candies_color);
         }while (!this.is_pos_free(new_candy));
         this.candies.push(new_candy);
     }
