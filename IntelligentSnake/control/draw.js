@@ -4,10 +4,10 @@ const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 console.log(canvas)
 
-const scale = 15;
-const rows = canvas.height / scale;
-const columns = canvas.width / scale;
-const timeout = 125;
+let scale = 15;
+let rows = canvas.height / scale;
+let columns = canvas.width / scale;
+let timeout = 125;
 let snake_screen;
 
 (function setup() {

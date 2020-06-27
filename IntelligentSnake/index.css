@@ -22,6 +22,12 @@ body {
     font-size: 17px;
 }
 
+.topnav div vl {
+    border-left: 5px solid #7f7e7e;
+    height: 17px;
+    margin: 5px 90px;
+}
+
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
@@ -36,19 +42,24 @@ body {
 
 .vertical-center {
     /*margin: 0;*/
-    top: 50%;
-    margin-top: 20mm;
-    position: absolute;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    /*top: 50%;*/
+    /*!*margin-top: -20mm;*!*/
+    /*position: absolute;*/
+    /*-ms-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
 }
 
 .canvas {
-    margin-left: 5%;
+    margin: 40px 40px 40px 40px;
 }
 
 .vl {
+    float: left;
     border-left: 5px solid #7f7e7e;
-    height: 17px;
-    margin: 5px 90px;
+    height: 37px;
+    margin: 5px 5px;
+    border-radius: 35%;
+
+    text-align: center;
+    /*padding: 14px 16px;*/
 }

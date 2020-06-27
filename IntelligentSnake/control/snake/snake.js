@@ -10,12 +10,19 @@ class Snake
         this.body = [];
         this.curr_dir = Direction.RIGHT;
         this.can_change_dir = false;
+        this.movement_queue = [];
     }
 
     set_dir(dir) {
-        if (dir !== Direction.get_opposite(this.curr_dir) && this.can_change_dir)
-            this.curr_dir = dir;
-            this.can_change_dir = false;
+        if (!this.movement_queue.contains(dir))
+        {
+            this.movement_queue.push(dir);
+            this.movement_queue = this.movement_queue.slice(0, 2);
+        }
+        // if (dir !== Direction.get_opposite(this.curr_dir) && this.can_change_dir) {
+        //     this.curr_dir = dir;
+        //     this.can_change_dir = false;
+        // }
     }
 
 
@@ -42,10 +49,15 @@ class Snake
     }
 
     move_next(max_x, max_y) {
-        this.move(this.curr_dir, max_x, max_y);
+        this.move(this.get_next_dir(), max_x, max_y);
     }
 
     add_and_move_next(max_x, max_y) {
-        this.add_and_move(this.curr_dir, max_x, max_y);
+        this.add_and_move(this.get_next_dir(), max_x, max_y);
+    }
+
+    get_next_dir()
+    {
+        return this.movement_queue.pop();
     }
 }
