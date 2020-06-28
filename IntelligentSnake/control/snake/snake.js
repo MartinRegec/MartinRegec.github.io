@@ -19,10 +19,6 @@ class Snake
             this.movement_queue.push(dir);
             this.movement_queue = this.movement_queue.slice(0, 2);
         }
-        // if (dir !== Direction.get_opposite(this.curr_dir) && this.can_change_dir) {
-        //     this.curr_dir = dir;
-        //     this.can_change_dir = false;
-        // }
     }
 
 

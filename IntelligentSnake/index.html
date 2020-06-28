@@ -9,15 +9,28 @@
 <body>
     <div class="topnav">
         <a class="active" href="../index.html">Home</a>
-        <div class="vl"></div>
-        <div>Setupe</div>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-    </div>
 
-    <canvas class="canvas" height="450" width="450" style="background-color: #006400"></canvas>
+        <div class="ai-switch">
+            <div class="vl"></div>
+            Enable AI Control:
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+<!--        <div class="vl"></div>-->
+    </div>
+    <div class="left-half">
+        <canvas class="canvas" height="450" width="450" style="background-color: #006400"></canvas>
+        <label class="curr-score">Score: 0</label>
+        <label class="max-score">Maximal Score: 0</label>
+    </div>
+    <div class="right-half">
+
+    </div>
 </body>
+
 <script type="text/javascript" src="control/enums.js"></script>
 <script type="text/javascript" src="control/point.js"></script>
 <script type="text/javascript" src="control/snake/snake_part.js"></script>

@@ -13,6 +13,7 @@ class MyScreen
         this.candies = [];
         this.snake = new Snake(Math.floor(width/2), Math.floor(height/2), snake_head_color, snake_body_color);
         this.grid = this.generate_grid();
+        this.step_without_new_candy = 0;
         this.update_grid();
     }
 
@@ -51,7 +52,13 @@ class MyScreen
     }
 
     update_grid() {
+        // add new candy every five steps
+        this.add_candy();
+
+        // clean current screen
         this.clean_grid();
+
+        // draw all candies and snake to screen
         this.grid[this.snake.head.y][this.snake.head.x].color = this.snake.head.color;
         for (let i = 0; i < this.snake.body.length; i++)
             this.grid[this.snake.body[i].y][this.snake.body[i].x].color = this.snake.body[i].color;
@@ -59,15 +66,10 @@ class MyScreen
             this.grid[this.candies[i].y][this.candies[i].x].color = this.candies[i].color;
     }
 
-    move(dir) {
-        this.snake.move(dir, this.width_-1, this.height_-1);
-        this.update_grid();
-    }
-
     move_next() {
-        this.snake.can_change_dir = false;
+        let returned_statement = "end"
+        let next_pos = this.check_next(this.snake.get_next_dir());
 
-        let next_pos = this.check_next(this.snake.curr_dir);
         if (this.collision_with_snake(next_pos))
             return "end";
         if (this.collision_with_candy(next_pos)) {
@@ -78,12 +80,15 @@ class MyScreen
                 }
             }
             this.add_and_move_next();
+            returned_statement = "candy";
         }
-        else
-            this.snake.move_next(this.width_-1, this.height_-1);
-
+        else {
+            this.snake.move_next(this.width_ - 1, this.height_ - 1);
+            returned_statement = "moved";
+        }
         this.update_grid();
-        this.snake.can_change_dir = true;
+
+        return returned_statement;
     }
 
     add_and_move(dir) {
@@ -104,7 +109,9 @@ class MyScreen
         for (let i = 0; i < this.snake.body.length; i++)
         {
             if (Point.compare(this.snake.body[i], point))
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -140,4 +147,16 @@ class MyScreen
             }
         }
     }
+
+    add_candy() {
+        if (this.candies.length < 5 && this.step_without_new_candy > 4)
+        {
+            this.generate_candy()
+            this.step_without_new_candy = 0;
+        }
+        else
+            this.step_without_new_candy++;
+
+    }
+
 }
