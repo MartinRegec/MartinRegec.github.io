@@ -14,7 +14,7 @@ class Snake
     }
 
     set_dir(dir) {
-        if (!this.movement_queue.contains(dir))
+        if (!this.movement_queue.includes(dir))
         {
             this.movement_queue.push(dir);
             this.movement_queue = this.movement_queue.slice(0, 2);
@@ -58,6 +58,18 @@ class Snake
 
     get_next_dir()
     {
-        return this.movement_queue.pop();
+        let next_dir;
+
+        while(true)
+        {
+            if (this.movement_queue.length === 0)
+                return this.curr_dir;
+            next_dir = this.movement_queue.pop();
+            if (next_dir !== Direction.get_opposite(this.curr_dir))
+            {
+                this.curr_dir = next_dir;
+                return next_dir;
+            }
+        }
     }
 }
