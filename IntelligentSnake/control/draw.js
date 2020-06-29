@@ -6,6 +6,8 @@ const left_half = document.querySelector(".left-half")
 const enable_ai_switch = document.querySelector(".switch")
 const curr_score_label = document.querySelector(".curr-score")
 const max_score_label = document.querySelector(".max-score")
+const speed_slider = document.getElementById("speed-slider");
+const speed_label = document.getElementById("speed-label");
 console.log(canvas)
 
 
@@ -31,7 +33,7 @@ let control = "manual";
     snake_screen.draw(ctx, scale);
     //window.setInterval(snake_screen.add_candy, timeout * 5);
 
-    window.setInterval(snake_control, timeout)
+    window.setTimeout(snake_control, timeout)
 }())
 
 window.addEventListener("keydown", ((evt) => {
@@ -44,13 +46,9 @@ window.addEventListener("keydown", ((evt) => {
 }))
 
 function snake_control() {
-    if (!enable_ai_switch.control.checked)
-        manual_snake_control();
-}
-
-function manual_snake_control() {
     // move with snake to next position
     let snake_statement = snake_screen.move_next();
+
     if (snake_statement === "end") {
         score = 0;
         snake_screen.reset()
@@ -74,12 +72,15 @@ function manual_snake_control() {
         max_score = score;
     max_score_label.innerHTML = "Maximal Score: " + max_score;
 
+    // set speed of snake and width of slider
+    window.setTimeout(snake_control, timeout / speed_slider.value)
+    speed_label.innerHTML = "Speed(" + speed_slider.value + "x):"
 }
 
 function get_snake_screen_size() {
     let size = Math.floor((left_half.offsetWidth - 20) / 25) * 25;
-    if (size > Math.floor((left_half.offsetHeight - 100) / 25) * 25)
-        size = Math.floor((left_half.offsetHeight - 100) / 25) * 25;
+    if (size > Math.floor((left_half.offsetHeight - 160) / 25) * 25)
+        size = Math.floor((left_half.offsetHeight - 160) / 25) * 25;
     canvas.height = size;
     canvas.width = size;
     return size;
